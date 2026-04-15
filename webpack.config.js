@@ -1,13 +1,13 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   entry: {
-    theme: "./src/index.js",
-    blocks: "./src/blocks/index.js"
+    theme: './src/index.js',
+    blocks: './src/blocks/index.js',
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].js"
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   },
   module: {
     rules: [
@@ -15,35 +15,35 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              ["@babel/preset-env", { useBuiltIns: "usage", corejs: 3 }],
-              "@babel/preset-react"
-            ]
-          }
-        }
+              ['@babel/preset-env', { useBuiltIns: 'usage', corejs: 3 }],
+              '@babel/preset-react',
+            ],
+          },
+        },
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"]
+    extensions: ['.js', '.jsx', '.json'],
   },
   externals: {
-    react: "React",
-    "react-dom": "ReactDOM",
-    "@wordpress/blocks": "@wordpress.blocks",
-    "@wordpress/components": "@wordpress.components",
-    "@wordpress/element": "@wordpress.element",
-    "@wordpress/i18n": "@wordpress.i18n",
-    "@wordpress/data": "@wordpress.data"
-  }
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    '@wordpress/blocks': ['window', 'wp', 'blocks'],
+    '@wordpress/components': ['window', 'wp', 'components'],
+    '@wordpress/element': ['window', 'wp', 'element'],
+    '@wordpress/i18n': ['window', 'wp', 'i18n'],
+    '@wordpress/data': ['window', 'wp', 'data'],
+  },
 };
